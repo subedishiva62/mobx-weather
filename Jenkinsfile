@@ -9,7 +9,7 @@ pipeline {
 
     stage('Pullcode ') {
       steps {
-        git 'https://github.com/devraj2048/mobx-weather.git'
+        git 'https://github.com/subedishiva62/mobx-weather.git'
       }
     }
 
@@ -22,7 +22,7 @@ pipeline {
     
     stage('compress') {
       steps {
-        sh 'cd /var/lib/jenkins/workspace/mumbatti'
+        sh 'cd /var/lib/jenkins/workspace/weather'
         sh "tar cvzf buid-${currentBuild.number}.tar.gz build"
          
       }
@@ -31,10 +31,14 @@ pipeline {
 
 stage('deploy a code ') {
      steps {
-      sh 'cd /var/lib/jenkins/workspace/mumbatti'
+      sh 'cd /var/lib/jenkins/workspace/weather'
        //sh 'echo checking checking'
-       sh "scp -P 22044  buid-${currentBuild.number}.tar.gz niraj@110.44.119.237:"
-       sh "ssh -p 22044 niraj@110.44.119.237 tar -xvf buid-${currentBuild.number}.tar.gz --directory  /usr/share/nginx/html/"
+      
+      // sh "scp -P 22044  buid-${currentBuild.number}.tar.gz niraj@110.44.119.237:"
+      sh "scp buid-${currentBuild.number}.tar.gz ubuntu@172.31.12.68:"
+       //sh "ssh -p 22044 niraj@110.44.119.237 tar -xvf buid-${currentBuild.number}.tar.gz --directory  /usr/share/nginx/html/"
+       sh "ssh  ubuntu@172.31.12.68 tar -xvf buid-${currentBuild.number}.tar.gz --directory  /usr/share/nginx/html/"
+
       }
     }
   }
