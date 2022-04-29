@@ -35,9 +35,9 @@ stage('deploy a code ') {
        //sh 'echo checking checking'
       
       // sh "scp -P 22044  buid-${currentBuild.number}.tar.gz niraj@110.44.119.237:"
-      sh "scp buid-${currentBuild.number}.tar.gz ubuntu@172.31.12.68:"
+      sh "scp buid-${currentBuild.number}.tar.gz ubuntu@172.31.89.222:"
        //sh "ssh -p 22044 niraj@110.44.119.237 tar -xvf buid-${currentBuild.number}.tar.gz --directory  /usr/share/nginx/html/"
-       sh "ssh  ubuntu@172.31.12.68 tar -xvf buid-${currentBuild.number}.tar.gz --directory  /usr/share/nginx/html/"
+       sh "ssh  ubuntu@172.31.89.222 tar -xvf buid-${currentBuild.number}.tar.gz --directory  /home/ubuntu"
 
       }
     }
