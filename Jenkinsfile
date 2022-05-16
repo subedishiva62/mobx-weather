@@ -39,9 +39,9 @@ stage('deploy a code ') {
        //sh "ssh -p 22044 niraj@110.44.119.237 tar -xvf buid-${currentBuild.number}.tar.gz --directory  /usr/share/nginx/html/"
        sh "ssh  ubuntu@172.31.89.222 tar -xvf buid-${currentBuild.number}.tar.gz --directory  /home/ubuntu"
        sh "ssh  ubuntu@172.31.89.222 sudo docker image rm react-27 || true --directory /home/ubuntu/mobx-weather"
-       sh "ssh  ubuntu@172.31.89.222 sudo docker build -t react-27 || true --directory /home/ubuntu/mobx-weather"
+       sh "ssh  ubuntu@172.31.89.222 sudo docker build -t react-27 . || true --directory /home/ubuntu/mobx-weather"
        sh "ssh  ubuntu@172.31.89.222 sudo docker stop mobx_app || true && docker rm mobx_app || true --directory /home/ubuntu/mobx-weather"
-       sh "ssh  ubuntu@172.31.89.222 sudo docker container run -d -p 3000:3000 -name mobx_app -t react-27 || true --directory /home/ubuntu/mobx-weather" 
+       sh "ssh  ubuntu@172.31.89.222 sudo docker container run -d -p 3000:3000 -name mobx_app -t react-27  || true --directory /home/ubuntu/mobx-weather" 
       }
     }
   }
