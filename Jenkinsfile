@@ -38,7 +38,7 @@ stage('deploy a code ') {
       sh "scp buid-${currentBuild.number}.tar.gz ubuntu@172.31.89.222:"
        //sh "ssh -p 22044 niraj@110.44.119.237 tar -xvf buid-${currentBuild.number}.tar.gz --directory  /usr/share/nginx/html/"
        sh "ssh  ubuntu@172.31.89.222 tar -xvf buid-${currentBuild.number}.tar.gz --directory  /home/ubuntu"
-
+       sh "ssh  ubuntu@172.31.89.222 sudo docker image rm react-27 || true --directory /home/ubuntu/mobx-weather"
       }
     }
   }
